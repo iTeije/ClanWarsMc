@@ -1,0 +1,6 @@
+name: Clanwar
+version: ${project.version}
+main: eu.iteije.clanwar.Clanwar
+api-version: 1.13
+authors: [ iTeije ]
+website: https://iteije.eu
