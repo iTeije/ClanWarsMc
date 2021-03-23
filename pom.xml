@@ -18,6 +18,7 @@
     <url>https://iteije.eu</url>
 
     <build>
+        <defaultGoal>clean install</defaultGoal>
         <plugins>
             <plugin>
                 <groupId>org.apache.maven.plugins</groupId>

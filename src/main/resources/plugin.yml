@@ -1,6 +1,10 @@
-name: Clanwar
+name: ClanWar
 version: ${project.version}
-main: eu.iteije.clanwar.Clanwar
+main: eu.iteije.clanwar.ClanWar
 api-version: 1.13
 authors: [ iTeije ]
 website: https://iteije.eu
+
+commands:
+  setspawn:
+    usage: /<command>
