@@ -1,0 +1,5 @@
+permission-error: "&cInvalid permissions."
+protocol-error: "&cYour protocol is not supported for this particular action."
+invalid-arguments: "&cInvalid arguments, use tab-complete to make sure your syntax is correct."
+
+setspawn-success: "&aSpawn &7(%spawn_type%) &ahas been set."
