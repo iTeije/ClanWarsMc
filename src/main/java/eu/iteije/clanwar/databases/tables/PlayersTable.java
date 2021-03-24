@@ -18,7 +18,8 @@ public class PlayersTable implements DatabaseTableImplementation {
         try (Connection connection = dataSource.getConnection()) {
             PreparedStatement statement = connection.prepareStatement("CREATE TABLE IF NOT EXISTS players(" +
                     "uuid varchar(36) PRIMARY KEY NOT NULL, " +
-                    "clan_id integer)"
+                    "clan_id integer, " +
+                    "clan_role integer)"
             );
             statement.execute();
 

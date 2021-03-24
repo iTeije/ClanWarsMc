@@ -31,6 +31,8 @@ public class DatabaseModule {
         this.instance = instance;
         this.service = Executors.newCachedThreadPool();
         this.configFile = configFile;
+
+        this.start();
     }
 
     public synchronized void start() {

@@ -1,1 +1,6 @@
-# TODO save database credentials
+database:
+  ip: ''
+  port: 3306
+  user: ''
+  password: ''
+  database: ''

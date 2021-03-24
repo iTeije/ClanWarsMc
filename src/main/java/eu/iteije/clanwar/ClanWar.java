@@ -19,8 +19,10 @@ public final class ClanWar extends JavaPlugin {
         PluginFile kitsFile = new PluginFile(this, "kits.yml");
         PluginFile messagesFile = new PluginFile(this, "messages.yml");
 
-        MessageModule messageModule = new MessageModule(messagesFile);
         this.databaseModule = new DatabaseModule(this, configFile);
+        this.databaseModule.createTables();
+
+        MessageModule messageModule = new MessageModule(messagesFile);
         GameModule gameModule = new GameModule(kitsFile, configFile, messageModule);
         PlayerModule playerModule = new PlayerModule(this, gameModule);
         CommandModule commandModule = new CommandModule(this, gameModule, messageModule);

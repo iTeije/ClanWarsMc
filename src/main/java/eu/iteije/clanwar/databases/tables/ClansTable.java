@@ -17,8 +17,8 @@ public class ClansTable implements DatabaseTableImplementation {
     public void create() {
         try (Connection connection = dataSource.getConnection()) {
             PreparedStatement statement = connection.prepareStatement("CREATE TABLE IF NOT EXISTS clans(" +
-                    "id int PRIMARY NOT NULL AUTO_INCREMENT, " +
-                    "name varchar(64) NOT NULL)"
+                    "id int PRIMARY KEY NOT NULL AUTO_INCREMENT, " +
+                    "clan_name varchar(64) NOT NULL)"
             );
             statement.execute();
 
