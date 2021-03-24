@@ -28,6 +28,8 @@ public class GameModule {
         this.configFile = configFile;
 
         this.messageModule = messageModule;
+
+        this.fetchSpawns();
     }
 
     private void fetchSpawns() {

@@ -8,3 +8,5 @@ website: https://iteije.eu
 commands:
   setspawn:
     usage: /<command>
+  createclan:
+    usage: /<command>

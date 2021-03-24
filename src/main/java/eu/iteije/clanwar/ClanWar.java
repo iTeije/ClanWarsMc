@@ -1,5 +1,6 @@
 package eu.iteije.clanwar;
 
+import eu.iteije.clanwar.clans.ClanModule;
 import eu.iteije.clanwar.commands.CommandModule;
 import eu.iteije.clanwar.databases.DatabaseModule;
 import eu.iteije.clanwar.games.GameModule;
@@ -24,8 +25,9 @@ public final class ClanWar extends JavaPlugin {
 
         MessageModule messageModule = new MessageModule(messagesFile);
         GameModule gameModule = new GameModule(kitsFile, configFile, messageModule);
-        PlayerModule playerModule = new PlayerModule(this, gameModule);
-        CommandModule commandModule = new CommandModule(this, gameModule, messageModule);
+        PlayerModule playerModule = new PlayerModule(this, gameModule, databaseModule);
+        ClanModule clanModule = new ClanModule(databaseModule, playerModule);
+        CommandModule commandModule = new CommandModule(this, gameModule, messageModule, playerModule, clanModule);
 
     }
 

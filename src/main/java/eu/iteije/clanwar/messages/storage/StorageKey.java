@@ -9,7 +9,11 @@ public enum StorageKey {
     INVALID_ARGUMENTS("invalid-arguments"),
 
     SPAWN_SET_SUCCESS("spawn-set-success"),
-    SPAWN_TP_NOT_FOUND("spawn-tp-not-found")
+    SPAWN_TP_NOT_FOUND("spawn-tp-not-found"),
+
+    CLAN_CREATE_EXISTS("clan-create-exists"),
+    CLAN_CREATE_UNAVAILABLE("clan-create-unavailable"),
+    CLAN_CREATE_SUCCESS("clan-create-success")
 
     ;
 

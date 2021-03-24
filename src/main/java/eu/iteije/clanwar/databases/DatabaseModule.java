@@ -138,6 +138,20 @@ public class DatabaseModule {
         }, service);
     }
 
+    public void execute(String query, Object... vars) {
+        makeFuture(() -> {
+            try (Connection connection = getConnection()) {
+                try (PreparedStatement statement = prepareStatement(query, connection, vars)) {
+                    statement.execute();
+                } catch (NullPointerException exception) {
+                    exception.printStackTrace();
+                }
+            }
+
+            return null;
+        });
+    }
+
     public Connection getConnection() {
         try {
             return dataSource.getConnection();
