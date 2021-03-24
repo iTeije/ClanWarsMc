@@ -7,6 +7,7 @@ public enum StorageKey {
     PERMISSION_ERROR("permission-error"),
     PROTOCOL_ERROR("protocol-error"),
     INVALID_ARGUMENTS("invalid-arguments"),
+    EXECUTE_ERROR("execute-error"),
 
     SPAWN_SET_SUCCESS("spawn-set-success"),
     SPAWN_TP_NOT_FOUND("spawn-tp-not-found"),

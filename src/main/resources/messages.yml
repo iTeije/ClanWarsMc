@@ -1,10 +1,11 @@
 permission-error: "&cInvalid permissions."
 protocol-error: "&cYour protocol is not supported for this particular action."
 invalid-arguments: "&cInvalid arguments, use tab-complete to make sure your syntax is correct."
+execute-error: "&cAn error occurred while executing this command."
 
 spawn-set-success: "&aSpawn &e%spawn_type% &ahas been set."
 spawn-tp-not-found: "&cSpawn &4%spawn_type% &ccould not be found."
 
 clan-create-exists: "&cClan with the name &4%clan_name% &calready exists!"
-clan-create-unavailable: "&cYou are already in another clan. Leave your clan using '/clan leave' first."
+clan-create-unavailable: "&cYou are already in another clan. Use '/clan leave' to leave your clan before trying again."
 clan-create-success: "&aClan &e%clan_name% &ahas been created and &e%player_name% &ahas been set as the owner."
