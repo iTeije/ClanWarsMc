@@ -1,6 +1,7 @@
 package eu.iteije.clanwar;
 
 import eu.iteije.clanwar.commands.CommandModule;
+import eu.iteije.clanwar.games.GameModule;
 import eu.iteije.clanwar.messages.MessageModule;
 import eu.iteije.clanwar.resources.PluginFile;
 import org.bukkit.plugin.java.JavaPlugin;
@@ -15,7 +16,8 @@ public final class ClanWar extends JavaPlugin {
         PluginFile messagesFile = new PluginFile(this, "messages.yml");
 
         MessageModule messageModule = new MessageModule(messagesFile);
-        CommandModule commandModule = new CommandModule(this, configFile, messageModule);
+        GameModule gameModule = new GameModule(kitsFile, configFile, messageModule);
+        CommandModule commandModule = new CommandModule(this, gameModule, messageModule);
 
     }
 

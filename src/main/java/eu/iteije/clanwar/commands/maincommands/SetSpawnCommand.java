@@ -1,8 +1,10 @@
 package eu.iteije.clanwar.commands.maincommands;
 
+import eu.iteije.clanwar.games.GameModule;
+import eu.iteije.clanwar.games.enums.SpawnPointType;
 import eu.iteije.clanwar.messages.MessageModule;
+import eu.iteije.clanwar.messages.Replacement;
 import eu.iteije.clanwar.messages.storage.StorageKey;
-import eu.iteije.clanwar.resources.PluginFile;
 import org.bukkit.command.Command;
 import org.bukkit.command.CommandExecutor;
 import org.bukkit.command.CommandSender;
@@ -15,16 +17,11 @@ import java.util.List;
 
 public class SetSpawnCommand implements CommandExecutor, TabCompleter {
 
-    enum SpawnPointType {
-        LOBBY,
-        GAME
-    }
-
-    private final PluginFile configFile;
+    private final GameModule gameModule;
     private final MessageModule messageModule;
 
-    public SetSpawnCommand(PluginFile configFile, MessageModule messageModule) {
-        this.configFile = configFile;
+    public SetSpawnCommand(GameModule gameModule, MessageModule messageModule) {
+        this.gameModule = gameModule;
         this.messageModule = messageModule;
     }
 
@@ -33,9 +30,12 @@ public class SetSpawnCommand implements CommandExecutor, TabCompleter {
             if (sender.hasPermission("clanwar.setspawn")) {
                 if (args.length == 1) {
                     try {
-                        SpawnPointType type = SpawnPointType.valueOf(args[0]);
+                        SpawnPointType type = SpawnPointType.valueOf(args[0].toUpperCase());
 
+                        Player player = (Player) sender;
+                        gameModule.setSpawn(type, player.getLocation());
 
+                        messageModule.send(player, StorageKey.SPAWN_SET_SUCCESS, new Replacement("%spawn_type%", type.name()));
                     } catch (IllegalArgumentException | NullPointerException exception) {
                         // Invalid arguments
                         messageModule.send(sender, StorageKey.INVALID_ARGUMENTS);

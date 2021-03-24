@@ -8,7 +8,8 @@ public enum StorageKey {
     PROTOCOL_ERROR("protocol-error"),
     INVALID_ARGUMENTS("invalid-arguments"),
 
-    SETSPAWN_SUCCESS("setspawn-success")
+    SPAWN_SET_SUCCESS("spawn-set-success"),
+    SPAWN_TP_NOT_FOUND("spawn-tp-not-found")
 
     ;
 
