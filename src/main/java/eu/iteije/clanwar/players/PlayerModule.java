@@ -66,7 +66,10 @@ public class PlayerModule {
     }
 
     public void setClan(UUID player, int clanId) {
-        this.players.get(player).setClanId(clanId);
+        if (this.players.containsKey(player)) {
+            this.players.get(player).setClanId(clanId);
+        }
+
 
         databaseModule.execute("UPDATE players SET clan_id=? WHERE uuid=?", clanId, player.toString());
     }

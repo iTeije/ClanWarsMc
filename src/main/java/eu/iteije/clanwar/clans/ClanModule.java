@@ -9,6 +9,7 @@ import org.bukkit.entity.Player;
 
 import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.util.Collection;
 import java.util.HashMap;
 import java.util.Map;
 import java.util.UUID;
@@ -108,6 +109,19 @@ public class ClanModule {
 
         databaseModule.execute("UPDATE clans SET owner_uuid=? WHERE id=?", response.getUuid().toString(), clan.getId());
         return response;
+    }
+
+    public void disband(Clan clan, PlayerModule playerModule) {
+        Collection<UUID> members = clan.getInfo().getMembers().values();
+        members.forEach(uuid -> playerModule.setClan(uuid, -1));
+        playerModule.setClan(clan.getOwner(), -1);
+
+        String clanName = clan.getName();
+        int id = clan.getId();
+
+        databaseModule.execute("DELETE FROM clans WHERE id=?", clan.getId());
+        this.clans.remove(id);
+        this.clanIdForName.remove(clanName);
     }
 
 }

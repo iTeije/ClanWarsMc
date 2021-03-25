@@ -1,6 +1,7 @@
 package eu.iteije.clanwar.commands.maincommands;
 
 import eu.iteije.clanwar.clans.ClanModule;
+import eu.iteije.clanwar.commands.subcommands.clan.ClanDisbandSubCommand;
 import eu.iteije.clanwar.commands.subcommands.clan.ClanInfoSubCommand;
 import eu.iteije.clanwar.commands.subcommands.clan.ClanCreateSubCommand;
 import eu.iteije.clanwar.commands.subcommands.clan.ClanTransferSubCommand;
@@ -31,7 +32,8 @@ public class ClanCommand extends PluginCommand implements CommandExecutor, TabCo
         this.commandManager.registerSubCommands(this.getSyntax(),
                 new ClanCreateSubCommand(clanModule, playerModule, messageModule),
                 new ClanInfoSubCommand(clanModule, messageModule, playerModule),
-                new ClanTransferSubCommand(clanModule, playerModule, messageModule)
+                new ClanTransferSubCommand(clanModule, playerModule, messageModule),
+                new ClanDisbandSubCommand(clanModule, playerModule, messageModule)
         );
     }
 

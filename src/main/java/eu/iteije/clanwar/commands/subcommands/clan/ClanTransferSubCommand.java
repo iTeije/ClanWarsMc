@@ -43,7 +43,7 @@ public class ClanTransferSubCommand extends SubCommand {
                         messageModule.send(sender, StorageKey.INVALID_ARGUMENTS);
                     }
                 } else {
-                    messageModule.send(sender, StorageKey.CLAN_TRANSFER_OWNERSHIP_ERROR);
+                    messageModule.send(sender, StorageKey.CLAN_OWNERSHIP_ERROR);
                 }
             } else {
                 messageModule.send(sender, StorageKey.CLAN_UNAVAILABLE);

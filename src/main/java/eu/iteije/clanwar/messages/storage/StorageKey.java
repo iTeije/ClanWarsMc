@@ -18,14 +18,17 @@ public enum StorageKey {
 
     CLAN_UNAVAILABLE("clan-unavailable"),
     CLAN_NOT_FOUND("clan-not-found"),
+    CLAN_OWNERSHIP_ERROR("clan-ownership-error"),
 
     CLAN_INFO_CLAN_NAME("clan-info-clan-name"),
     CLAN_INFO_OWNER("clan-info-owner"),
     CLAN_INFO_MEMBERS("clan-info-members"),
 
-    CLAN_TRANSFER_OWNERSHIP_ERROR("clan-transfer-ownership-error"),
     CLAN_TRANSFER_ERROR("clan-transfer-error"),
-    CLAN_TRANSFER_SUCCESS("clan-transfer-success")
+    CLAN_TRANSFER_SUCCESS("clan-transfer-success"),
+
+    CLAN_DISBAND_CONFIRM("clan-disband-confirm"),
+    CLAN_DISBAND_SUCCESS("clan-disband-success")
 
     ;
 
