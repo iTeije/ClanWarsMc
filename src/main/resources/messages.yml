@@ -22,9 +22,9 @@ clan-info-members: "&aMembers &7%clan_member_names%"
 clan-transfer-error: "&cUnable to transfer ownership to this player."
 clan-transfer-success: "&aOwnership has successfully been transferred to &e%player_name%&a!"
 
-clan-disband-confirm: "&cAre you sure you want to disband your clan? Doing so will permanently delete all stats and all members. Type &e/clan disband confirm &cto confirm."
+clan-disband-confirm: "&cAre you sure you want to disband your clan? Doing so will permanently delete all stats and members. Type &e/clan disband confirm &cto within 30 seconds confirm."
 clan-disband-success: "&aYour clan has been disbanded successfully."
 
 clan-invite-another-clan: "&cThis player is in another clan!"
 clan-invite-success: "&aYou invited &e%player_name%&a to your clan."
-clan-invite-target: "&b&lINVITE! &eYou have been invited by &a%clan_owner_name% &eto join their clan. Type &a/clan accept %clan_name% &eto join or &a/clan decline %clan_name% &eto decline the invitation."
+clan-invite-target: "&b&lINVITE! &eYou have been invited by &a%clan_owner_name% &eto join their clan. Type &a/clan accept %clan_name% &eto accept or &a/clan decline %clan_name% &eto decline the invitation."
