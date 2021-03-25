@@ -10,7 +10,13 @@ clan-create-exists: "&cClan with the name &4%clan_name% &calready exists!"
 clan-create-unavailable: "&cYou are already in another clan. Use '/clan leave' to leave your clan before trying again."
 clan-create-success: "&aClan &e%clan_name% &ahas been created and &e%player_name% &ahas been set as the owner."
 
-clan-info-unavailable: "&cYou are not in a clan!"
-clan-info-clan-name: "&aClan name: &e%clan_name%"
-clan-info-owner: "&aOwner: &e%clan_owner_name%"
-clan-info-members: "&aMembers: &e%clan_member_names%"
+clan-unavailable: "&cYou are not in a clan!"
+clan-not-found: "&cUnable to find clan!"
+
+clan-info-clan-name: "&aClan name &7%clan_name%"
+clan-info-owner: "&aOwner &7%clan_owner_name%"
+clan-info-members: "&aMembers &7%clan_member_names%"
+
+clan-transfer-ownership-error: "&cYou are not the owner of the clan and therefore not able to transfer ownership."
+clan-transfer-error: "&cUnable to transfer ownership to this player."
+clan-transfer-success: "&aOwnership has successfully been transferred to &e%player_name%&a!"

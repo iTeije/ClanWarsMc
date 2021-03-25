@@ -16,10 +16,16 @@ public enum StorageKey {
     CLAN_CREATE_UNAVAILABLE("clan-create-unavailable"),
     CLAN_CREATE_SUCCESS("clan-create-success"),
 
-    CLAN_INFO_UNAVAILABLE("clan-info-unavailable"),
+    CLAN_UNAVAILABLE("clan-unavailable"),
+    CLAN_NOT_FOUND("clan-not-found"),
+
     CLAN_INFO_CLAN_NAME("clan-info-clan-name"),
     CLAN_INFO_OWNER("clan-info-owner"),
-    CLAN_INFO_MEMBERS("clan-info-members")
+    CLAN_INFO_MEMBERS("clan-info-members"),
+
+    CLAN_TRANSFER_OWNERSHIP_ERROR("clan-transfer-ownership-error"),
+    CLAN_TRANSFER_ERROR("clan-transfer-error"),
+    CLAN_TRANSFER_SUCCESS("clan-transfer-success")
 
     ;
 

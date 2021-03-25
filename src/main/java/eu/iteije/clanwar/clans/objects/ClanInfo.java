@@ -3,31 +3,38 @@ package eu.iteije.clanwar.clans.objects;
 import lombok.Getter;
 import lombok.Setter;
 
-import java.util.ArrayList;
-import java.util.List;
+import java.util.*;
 
 public class ClanInfo {
 
     @Getter @Setter
     private String ownerName;
-    private final List<String> members;
+    @Getter private final Map<String, UUID> members;
 
     public ClanInfo() {
         this.ownerName = "-";
-        this.members = new ArrayList<>();
+        this.members = new HashMap<>();
     }
 
-    public void addMember(String name) {
-        members.add(name);
+    public void addMember(UUID uuid, String name) {
+        members.put(name, uuid);
     }
 
     public void removeMember(String name) {
         members.remove(name);
     }
 
+    public UUID getFromName(String name) {
+        return this.members.get(name);
+    }
+
+    public Set<String> getMemberNames() {
+        return this.members.keySet();
+    }
+
     public String getMembersReadable() {
         if (members.size() == 0) return "-";
-        return String.join(", ", members);
+        return String.join(", ", members.keySet());
     }
 
 }

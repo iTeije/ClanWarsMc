@@ -1,4 +1,4 @@
-package eu.iteije.clanwar.commands.subcommands;
+package eu.iteije.clanwar.commands.subcommands.clan;
 
 import eu.iteije.clanwar.clans.ClanModule;
 import eu.iteije.clanwar.framework.commands.objects.SubCommand;
@@ -9,13 +9,13 @@ import eu.iteije.clanwar.players.PlayerModule;
 import org.bukkit.command.CommandSender;
 import org.bukkit.entity.Player;
 
-public class CreateClanSubCommand extends SubCommand {
+public class ClanCreateSubCommand extends SubCommand {
 
     private final ClanModule clanModule;
     private final PlayerModule playerModule;
     private final MessageModule messageModule;
 
-    public CreateClanSubCommand(ClanModule clanModule, PlayerModule playerModule, MessageModule messageModule) {
+    public ClanCreateSubCommand(ClanModule clanModule, PlayerModule playerModule, MessageModule messageModule) {
         super("create", "Create a new clan", "clan");
         this.clanModule = clanModule;
         this.playerModule = playerModule;

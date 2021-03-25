@@ -2,6 +2,7 @@ package eu.iteije.clanwar.clans;
 
 import eu.iteije.clanwar.clans.objects.Clan;
 import eu.iteije.clanwar.clans.objects.ClanInfo;
+import eu.iteije.clanwar.clans.responses.TransferResponse;
 import eu.iteije.clanwar.databases.DatabaseModule;
 import eu.iteije.clanwar.players.PlayerModule;
 import org.bukkit.entity.Player;
@@ -50,7 +51,7 @@ public class ClanModule {
                                 if (uuid.toString().equals(memberUniqueId)) {
                                     info.setOwnerName(memberUsername);
                                 } else {
-                                    info.addMember(memberUsername);
+                                    info.addMember(UUID.fromString(memberUniqueId), memberUsername);
                                 }
                             }
                         } catch (SQLException exception) {
@@ -70,7 +71,7 @@ public class ClanModule {
     }
 
     public Clan getClan(String name) {
-        return this.clans.get(this.clanIdForName.getOrDefault(name, -1));
+        return this.clans.get(this.clanIdForName.getOrDefault(name.toLowerCase(), -1));
     }
 
     public Clan getClan(int id) {
@@ -98,6 +99,15 @@ public class ClanModule {
                 }
             }, "SELECT * FROM clans WHERE owner_uuid=?", owner.toString());
         }, "INSERT INTO clans (clan_name, owner_uuid) VALUES (?, ?)", name, owner.toString());
+    }
+
+    public TransferResponse transfer(Clan clan, String playerName) {
+        TransferResponse response = clan.transfer(playerName);
+
+        if (response == null) return null;
+
+        databaseModule.execute("UPDATE clans SET owner_uuid=? WHERE id=?", response.getUuid().toString(), clan.getId());
+        return response;
     }
 
 }

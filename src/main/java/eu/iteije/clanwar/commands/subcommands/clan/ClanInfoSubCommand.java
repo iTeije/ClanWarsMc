@@ -1,4 +1,4 @@
-package eu.iteije.clanwar.commands.subcommands;
+package eu.iteije.clanwar.commands.subcommands.clan;
 
 import eu.iteije.clanwar.clans.ClanModule;
 import eu.iteije.clanwar.clans.objects.Clan;
@@ -32,21 +32,30 @@ public class ClanInfoSubCommand extends SubCommand {
                 int clanId = playerModule.getPlayer(player.getUniqueId()).getClanId();
                 Clan clan = clanModule.getClan(clanId);
                 if (clan != null) {
-                    messageModule.sendHeaderFooter(true, player, "CLAN INFO");
-                    messageModule.send(sender, StorageKey.CLAN_INFO_CLAN_NAME, new Replacement("%clan_name%", clan.getName()));
-                    messageModule.send(sender, StorageKey.CLAN_INFO_OWNER, new Replacement("%clan_owner_name%", clan.getInfo().getOwnerName()));
-                    messageModule.send(sender, StorageKey.CLAN_INFO_MEMBERS, new Replacement("%clan_member_names%", clan.getInfo().getMembersReadable()));
-                    messageModule.sendHeaderFooter(false, player, "CLAN INFO");
+                    sendClanInfo(clan, sender);
                 } else {
-                    messageModule.send(sender, StorageKey.CLAN_INFO_UNAVAILABLE);
+                    messageModule.send(sender, StorageKey.CLAN_UNAVAILABLE);
                 }
             } else if (args.length == 1) {
-
+                Clan clan = clanModule.getClan(args[0]);
+                if (clan != null) {
+                    sendClanInfo(clan, sender);
+                } else {
+                    messageModule.send(sender, StorageKey.CLAN_NOT_FOUND);
+                }
             } else {
                 messageModule.send(sender, StorageKey.INVALID_ARGUMENTS);
             }
         } else {
             messageModule.send(sender, StorageKey.PROTOCOL_ERROR);
         }
+    }
+
+    private void sendClanInfo(Clan clan, CommandSender sender) {
+        messageModule.sendHeaderFooter(true, sender, "CLAN INFO");
+        messageModule.send(sender, StorageKey.CLAN_INFO_CLAN_NAME, new Replacement("%clan_name%", clan.getName()));
+        messageModule.send(sender, StorageKey.CLAN_INFO_OWNER, new Replacement("%clan_owner_name%", clan.getInfo().getOwnerName()));
+        messageModule.send(sender, StorageKey.CLAN_INFO_MEMBERS, new Replacement("%clan_member_names%", clan.getInfo().getMembersReadable()));
+        messageModule.sendHeaderFooter(false, sender, "CLAN INFO");
     }
 }
