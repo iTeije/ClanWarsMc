@@ -22,6 +22,12 @@ public class MessageModule {
         sender.sendMessage(message);
     }
 
+    public void sendHeaderFooter(boolean header, CommandSender sender, String message) {
+        sender.sendMessage("");
+        sender.sendMessage(translateColors("&7---------- &e&l" + message.toUpperCase() + " &7----------"));
+        if (header) sender.sendMessage("");
+    }
+
     private String getMessage(StorageKey key) {
         return this.translateColors(messagesFile.getConfiguration().getString(key.getPath()));
     }

@@ -32,10 +32,11 @@ public class ClanInfoSubCommand extends SubCommand {
                 int clanId = playerModule.getPlayer(player.getUniqueId()).getClanId();
                 Clan clan = clanModule.getClan(clanId);
                 if (clan != null) {
-                    player.sendMessage("");
+                    messageModule.sendHeaderFooter(true, player, "CLAN INFO");
                     messageModule.send(sender, StorageKey.CLAN_INFO_CLAN_NAME, new Replacement("%clan_name%", clan.getName()));
                     messageModule.send(sender, StorageKey.CLAN_INFO_OWNER, new Replacement("%clan_owner_name%", clan.getInfo().getOwnerName()));
                     messageModule.send(sender, StorageKey.CLAN_INFO_MEMBERS, new Replacement("%clan_member_names%", clan.getInfo().getMembersReadable()));
+                    messageModule.sendHeaderFooter(false, player, "CLAN INFO");
                 } else {
                     messageModule.send(sender, StorageKey.CLAN_INFO_UNAVAILABLE);
                 }
