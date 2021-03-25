@@ -21,6 +21,7 @@ public final class ClanWar extends JavaPlugin {
         PluginFile configFile = new PluginFile(this, "config.yml");
         PluginFile kitsFile = new PluginFile(this, "kits.yml");
         PluginFile messagesFile = new PluginFile(this, "messages.yml");
+        PluginFile invitesFile = new PluginFile(this, "invites.yml");
 
         this.databaseModule = new DatabaseModule(this, configFile);
         this.databaseModule.createTables();
@@ -28,7 +29,7 @@ public final class ClanWar extends JavaPlugin {
         MessageModule messageModule = new MessageModule(messagesFile);
         GameModule gameModule = new GameModule(kitsFile, configFile, messageModule);
         PlayerModule playerModule = new PlayerModule(this, gameModule, databaseModule);
-        ClanModule clanModule = new ClanModule(databaseModule, playerModule);
+        ClanModule clanModule = new ClanModule(databaseModule, playerModule, messageModule, invitesFile, this);
         CommandModule commandModule = new CommandModule(this, gameModule, messageModule, playerModule, clanModule);
 
         // In case some fucking idiot decides to reload the server

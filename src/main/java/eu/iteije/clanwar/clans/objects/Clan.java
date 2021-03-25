@@ -1,14 +1,10 @@
 package eu.iteije.clanwar.clans.objects;
 
 import eu.iteije.clanwar.clans.responses.TransferResponse;
+import eu.iteije.clanwar.utils.fetcher.PlayerDataObject;
+import eu.iteije.clanwar.utils.fetcher.PlayerFetcher;
 import lombok.Getter;
-import org.json.simple.JSONObject;
-import org.json.simple.parser.JSONParser;
 
-import java.io.BufferedReader;
-import java.io.InputStreamReader;
-import java.net.HttpURLConnection;
-import java.net.URL;
 import java.util.UUID;
 
 @Getter
@@ -20,10 +16,6 @@ public class Clan {
 
     private final ClanInfo info;
 
-    public Clan(String name, UUID owner, Integer id) {
-        this(name, owner, id, new ClanInfo());
-    }
-
     public Clan(String name, UUID owner, Integer id, ClanInfo info) {
         this.name = name;
         this.owner = owner;
@@ -32,39 +24,20 @@ public class Clan {
     }
 
     public TransferResponse transfer(String playerName) {
-        try {
-            URL url = new URL("https://api.mojang.com/users/profiles/minecraft/" + playerName);
-            HttpURLConnection con = (HttpURLConnection) url.openConnection();
-            con.setRequestMethod("GET");
-            con.setDoOutput(true);
+        PlayerDataObject data = PlayerFetcher.getPlayerData(playerName);
+        if (data == null) return null;
+        playerName = data.getExactPlayerName();
+        UUID uuid = this.info.getMembers().get(playerName);
 
-            BufferedReader input = new BufferedReader(new InputStreamReader(con.getInputStream()));
-            String inputLine;
-            StringBuilder content = new StringBuilder();
-            while ((inputLine = input.readLine()) != null) {
-                content.append(inputLine);
-            }
-            input.close();
-            con.disconnect();
+        if (uuid != null) {
+            moveOwnerToMembers();
 
-            String output = content.toString();
-            JSONParser parser = new JSONParser();
-            JSONObject data = (JSONObject) parser.parse(output);
-
-            playerName = (String) data.get("name");
-            UUID uuid = this.info.getMembers().get(playerName);
-
-            if (uuid != null) {
-                moveOwnerToMembers();
-
-                this.owner = uuid;
-                this.info.setOwnerName(playerName);
-                this.info.removeMember(playerName);
-                return new TransferResponse(uuid, playerName);
-            }
-        } catch (Exception exception) {
-            exception.printStackTrace();
+            this.owner = uuid;
+            this.info.setOwnerName(playerName);
+            this.info.removeMember(playerName);
+            return new TransferResponse(uuid, playerName);
         }
+
         return null;
     }
 

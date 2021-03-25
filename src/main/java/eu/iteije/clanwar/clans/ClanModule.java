@@ -1,10 +1,15 @@
 package eu.iteije.clanwar.clans;
 
+import eu.iteije.clanwar.ClanWar;
+import eu.iteije.clanwar.clans.invites.ClanInviteModule;
 import eu.iteije.clanwar.clans.objects.Clan;
 import eu.iteije.clanwar.clans.objects.ClanInfo;
 import eu.iteije.clanwar.clans.responses.TransferResponse;
 import eu.iteije.clanwar.databases.DatabaseModule;
+import eu.iteije.clanwar.messages.MessageModule;
 import eu.iteije.clanwar.players.PlayerModule;
+import eu.iteije.clanwar.resources.PluginFile;
+import lombok.Getter;
 import org.bukkit.entity.Player;
 
 import java.sql.ResultSet;
@@ -18,14 +23,16 @@ public class ClanModule {
 
     private final DatabaseModule databaseModule;
     private final PlayerModule playerModule;
+    @Getter private final ClanInviteModule inviteModule;
 
     private final Map<Integer, Clan> clans;
     private final Map<String, Integer> clanIdForName;
 
-    public ClanModule(DatabaseModule databaseModule, PlayerModule playerModule) {
+    public ClanModule(DatabaseModule databaseModule, PlayerModule playerModule, MessageModule messageModule, PluginFile invitesFile, ClanWar instance) {
         this.databaseModule = databaseModule;
         this.playerModule = playerModule;
 
+        this.inviteModule = new ClanInviteModule(databaseModule, this, messageModule, invitesFile, instance);
         this.clans = new HashMap<>();
         this.clanIdForName = new HashMap<>();
 

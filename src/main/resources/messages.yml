@@ -2,6 +2,7 @@ permission-error: "&cInvalid permissions."
 protocol-error: "&cYour protocol is not supported for this particular action."
 invalid-arguments: "&cInvalid arguments, use tab-complete to make sure your syntax is correct."
 execute-error: "&cAn error occurred while executing this command."
+player-not-found: "&cUnable to find a player with that name."
 
 spawn-set-success: "&aSpawn &e%spawn_type% &ahas been set."
 spawn-tp-not-found: "&cSpawn &4%spawn_type% &ccould not be found."
@@ -23,3 +24,7 @@ clan-transfer-success: "&aOwnership has successfully been transferred to &e%play
 
 clan-disband-confirm: "&cAre you sure you want to disband your clan? Doing so will permanently delete all stats and all members. Type &e/clan disband confirm &cto confirm."
 clan-disband-success: "&aYour clan has been disbanded successfully."
+
+clan-invite-another-clan: "&cThis player is in another clan!"
+clan-invite-success: "&aYou invited &e%player_name%&a to your clan."
+clan-invite-target: "&b&lINVITE! &eYou have been invited by &a%clan_owner_name% &eto join their clan. Type &a/clan join %clan_name% &eto join or &a/clan decline %clan_name% &eto decline the invitation."

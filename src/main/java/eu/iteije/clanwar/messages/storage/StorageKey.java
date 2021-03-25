@@ -8,6 +8,7 @@ public enum StorageKey {
     PROTOCOL_ERROR("protocol-error"),
     INVALID_ARGUMENTS("invalid-arguments"),
     EXECUTE_ERROR("execute-error"),
+    PLAYER_NOT_FOUND("player-not-found"),
 
     SPAWN_SET_SUCCESS("spawn-set-success"),
     SPAWN_TP_NOT_FOUND("spawn-tp-not-found"),
@@ -28,7 +29,11 @@ public enum StorageKey {
     CLAN_TRANSFER_SUCCESS("clan-transfer-success"),
 
     CLAN_DISBAND_CONFIRM("clan-disband-confirm"),
-    CLAN_DISBAND_SUCCESS("clan-disband-success")
+    CLAN_DISBAND_SUCCESS("clan-disband-success"),
+
+    CLAN_INVITE_ANOTHER_CLAN("clan-invite-another-clan"),
+    CLAN_INVITE_SUCCESS("clan-invite-success"),
+    CLAN_INVITE_TARGET("clan-invite-target"),
 
     ;
 
