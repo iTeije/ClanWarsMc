@@ -39,7 +39,7 @@ public class ClanCreateSubCommand extends SubCommand {
                         messageModule.send(sender, StorageKey.CLAN_CREATE_UNAVAILABLE);
                     }
                 } else {
-                    messageModule.send(sender, StorageKey.CLAN_CREATE_EXISTS);
+                    messageModule.send(sender, StorageKey.CLAN_CREATE_EXISTS, new Replacement("%clan_name%", args[0]));
                 }
             } else {
                 messageModule.send(sender, StorageKey.INVALID_ARGUMENTS);
