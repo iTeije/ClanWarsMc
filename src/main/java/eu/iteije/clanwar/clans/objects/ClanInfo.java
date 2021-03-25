@@ -3,13 +3,19 @@ package eu.iteije.clanwar.clans.objects;
 import lombok.Getter;
 import lombok.Setter;
 
+import java.util.ArrayList;
 import java.util.List;
 
 public class ClanInfo {
 
     @Getter @Setter
     private String ownerName;
-    private List<String> members;
+    private final List<String> members;
+
+    public ClanInfo() {
+        this.ownerName = "-";
+        this.members = new ArrayList<>();
+    }
 
     public void addMember(String name) {
         members.add(name);
@@ -20,6 +26,7 @@ public class ClanInfo {
     }
 
     public String getMembersReadable() {
+        if (members.size() == 0) return "-";
         return String.join(", ", members);
     }
 

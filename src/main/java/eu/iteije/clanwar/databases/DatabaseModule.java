@@ -125,7 +125,7 @@ public class DatabaseModule {
         return null;
     }
 
-    private <T> CompletableFuture<T> makeFuture(Callable<T> supplier) {
+    private CompletableFuture<CachedRowSet> makeFuture(Callable<CachedRowSet> supplier) {
         return CompletableFuture.supplyAsync(() -> {
             try {
                 return supplier.call();
@@ -139,6 +139,10 @@ public class DatabaseModule {
     }
 
     public void execute(String query, Object... vars) {
+        this.execute((cachedRowSet) -> {}, query, vars);
+    }
+
+    public void execute(Consumer<CachedRowSet> onComplete, String query, Object... vars) {
         makeFuture(() -> {
             try (Connection connection = getConnection()) {
                 try (PreparedStatement statement = prepareStatement(query, connection, vars)) {
@@ -149,7 +153,7 @@ public class DatabaseModule {
             }
 
             return null;
-        });
+        }).thenAccept(onComplete);
     }
 
     public Connection getConnection() {

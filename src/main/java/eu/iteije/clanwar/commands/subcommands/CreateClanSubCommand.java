@@ -30,7 +30,7 @@ public class CreateClanSubCommand extends SubCommand {
                 if (clanModule.getClan(args[0]) == null) {
                     // Check whether the player creating a clan is already in another clan
                     if (playerModule.getPlayer(player.getUniqueId()).getClanId() == -1) {
-                        clanModule.createClan(args[0], player.getUniqueId());
+                        clanModule.createClan(args[0], player);
                         messageModule.send(sender, StorageKey.CLAN_CREATE_SUCCESS,
                                 new Replacement("%clan_name%", args[0]),
                                 new Replacement("%player_name%", player.getName())

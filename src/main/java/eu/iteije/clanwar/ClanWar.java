@@ -7,6 +7,8 @@ import eu.iteije.clanwar.games.GameModule;
 import eu.iteije.clanwar.messages.MessageModule;
 import eu.iteije.clanwar.players.PlayerModule;
 import eu.iteije.clanwar.resources.PluginFile;
+import org.bukkit.Bukkit;
+import org.bukkit.entity.Player;
 import org.bukkit.plugin.java.JavaPlugin;
 
 public final class ClanWar extends JavaPlugin {
@@ -29,6 +31,10 @@ public final class ClanWar extends JavaPlugin {
         ClanModule clanModule = new ClanModule(databaseModule, playerModule);
         CommandModule commandModule = new CommandModule(this, gameModule, messageModule, playerModule, clanModule);
 
+        // In case some fucking idiot decides to reload the server
+        for (Player player : Bukkit.getOnlinePlayers()) {
+            playerModule.savePlayer(player);
+        }
     }
 
     @Override

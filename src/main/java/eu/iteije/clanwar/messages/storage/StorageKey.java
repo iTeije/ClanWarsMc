@@ -14,7 +14,12 @@ public enum StorageKey {
 
     CLAN_CREATE_EXISTS("clan-create-exists"),
     CLAN_CREATE_UNAVAILABLE("clan-create-unavailable"),
-    CLAN_CREATE_SUCCESS("clan-create-success")
+    CLAN_CREATE_SUCCESS("clan-create-success"),
+
+    CLAN_INFO_UNAVAILABLE("clan-info-unavailable"),
+    CLAN_INFO_CLAN_NAME("clan-info-clan-name"),
+    CLAN_INFO_OWNER("clan-info-owner"),
+    CLAN_INFO_MEMBERS("clan-info-members")
 
     ;
 

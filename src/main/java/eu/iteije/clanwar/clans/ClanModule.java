@@ -4,24 +4,28 @@ import eu.iteije.clanwar.clans.objects.Clan;
 import eu.iteije.clanwar.clans.objects.ClanInfo;
 import eu.iteije.clanwar.databases.DatabaseModule;
 import eu.iteije.clanwar.players.PlayerModule;
+import org.bukkit.entity.Player;
 
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.HashMap;
 import java.util.Map;
 import java.util.UUID;
-import java.util.concurrent.atomic.AtomicInteger;
 
 public class ClanModule {
 
     private final DatabaseModule databaseModule;
     private final PlayerModule playerModule;
-    private final Map<String, Clan> clans;
+
+    private final Map<Integer, Clan> clans;
+    private final Map<String, Integer> clanIdForName;
 
     public ClanModule(DatabaseModule databaseModule, PlayerModule playerModule) {
         this.databaseModule = databaseModule;
         this.playerModule = playerModule;
+
         this.clans = new HashMap<>();
+        this.clanIdForName = new HashMap<>();
 
         this.loadClans(databaseModule);
     }
@@ -33,8 +37,6 @@ public class ClanModule {
                     int clanId = set.getInt("id");
                     String name = set.getString("clan_name");
                     UUID uuid = UUID.fromString(set.getString("owner_uuid"));
-
-                    Clan clan = new Clan(name, uuid, clanId);
 
                     ClanInfo info = new ClanInfo();
                     databaseModule.fetch(userRowSet -> {
@@ -56,8 +58,10 @@ public class ClanModule {
                         }
                     }, "SELECT uuid, username FROM players WHERE clan_id=?", clanId);
 
-                    clan.setInfo(info);
-                    this.clans.put(name.toLowerCase(), clan);
+                    Clan clan = new Clan(name, uuid, clanId, info);
+
+                    this.clans.put(clanId, clan);
+                    this.clanIdForName.put(name.toLowerCase(), clanId);
                 }
             } catch (SQLException exception) {
                 exception.printStackTrace();
@@ -66,27 +70,34 @@ public class ClanModule {
     }
 
     public Clan getClan(String name) {
-        return this.clans.get(name.toLowerCase());
+        return this.clans.get(this.clanIdForName.getOrDefault(name, -1));
     }
 
+    public Clan getClan(int id) {
+        return this.clans.get(id);
+    }
 
-    public void createClan(String name, UUID owner) {
-        databaseModule.execute("INSERT INTO clans (clan_name, owner_uuid) VALUES (?, ?)", name, owner.toString());
+    public void createClan(String name, Player player) {
+        UUID owner = player.getUniqueId();
+        databaseModule.execute(cachedRowSet -> {
+            databaseModule.fetch(rowSet -> {
+                try (ResultSet set = rowSet.getOriginal()) {
+                    while (set.next()) {
+                        int id = set.getInt("id");
 
-        AtomicInteger id = new AtomicInteger(-1);
-        databaseModule.fetch(rowSet -> {
-            try (ResultSet set = rowSet.getOriginal()) {
-                while (set.next()) {
-                    playerModule.getPlayer(owner).setClanId(set.getInt("id"));
-                    id.set(set.getInt("id"));
+                        ClanInfo info = new ClanInfo();
+                        info.setOwnerName(player.getName());
+
+                        this.clans.put(id, new Clan(name, owner, id, info));
+                        this.clanIdForName.put(name.toLowerCase(), id);
+
+                        this.playerModule.setClan(owner, id);
+                    }
+                } catch (SQLException exception) {
+                    exception.printStackTrace();
                 }
-            } catch (SQLException exception) {
-                exception.printStackTrace();
-            }
-        }, "SELECT * FROM clans WHERE owner_uuid=?", owner.toString());
-
-        this.clans.put(name.toLowerCase(), new Clan(name, owner, id.get()));
-        this.playerModule.setClan(owner, id.get());
+            }, "SELECT * FROM clans WHERE owner_uuid=?", owner.toString());
+        }, "INSERT INTO clans (clan_name, owner_uuid) VALUES (?, ?)", name, owner.toString());
     }
 
 }

@@ -9,3 +9,8 @@ spawn-tp-not-found: "&cSpawn &4%spawn_type% &ccould not be found."
 clan-create-exists: "&cClan with the name &4%clan_name% &calready exists!"
 clan-create-unavailable: "&cYou are already in another clan. Use '/clan leave' to leave your clan before trying again."
 clan-create-success: "&aClan &e%clan_name% &ahas been created and &e%player_name% &ahas been set as the owner."
+
+clan-info-unavailable: "&cYou are not in a clan!"
+clan-info-clan-name: "&aClan name: &e%clan_name%"
+clan-info-owner: "&aOwner: &e%clan_owner_name%"
+clan-info-members: "&aMembers: &e%clan_member_names%"

@@ -27,6 +27,7 @@ public class MessageModule {
     }
 
     private String translateColors(String input) {
+        if (input == null) return ChatColor.translateAlternateColorCodes('&', "&cMessage not found");
         return ChatColor.translateAlternateColorCodes('&', input);
     }
 
