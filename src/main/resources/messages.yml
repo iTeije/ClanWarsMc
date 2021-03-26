@@ -37,3 +37,6 @@ clan-handleinvitation-unavailable: "&cYou are already in another clan."
 clan-handleinvitation-not-found: "&cNo invitation from this clan has been found."
 clan-accept-success: "&aYou have successfully joined &e%clan_name%&a!"
 clan-decline-success: "&aDeclined invitation from &e%clan_name%&a!"
+
+clan-kick-error: "&cThis player is not a member of your clan!"
+clan-kick-success: "&aYou successfully removed &e%player_name%&a from your clan."

@@ -37,15 +37,19 @@ public class ClanAcceptSubCommand extends SubCommand {
             if (clanModule.getClan(playerModule.getPlayer(uuid).getClanId()) == null) {
                 if (args.length == 1) {
                     Clan clan = clanModule.getClan(args[0]);
-                    int id = clan.getId();
-                    boolean hasInvite = this.inviteModule.hasInvite(id, uuid);
-                    // Check if the player actually has a clan invite from the selected clan
-                    if (hasInvite) {
-                        // Join the clan
-                        this.inviteModule.handleInvitation(clan, true, uuid, player.getName());
-                        messageModule.send(player, StorageKey.CLAN_ACCEPT_SUCCESS, new Replacement("%clan_name%", clan.getName()));
+                    if (clan != null) {
+                        int id = clan.getId();
+                        boolean hasInvite = this.inviteModule.hasInvite(id, uuid);
+                        // Check if the player actually has a clan invite from the selected clan
+                        if (hasInvite) {
+                            // Join the clan
+                            this.inviteModule.handleInvitation(clan, true, uuid, player.getName());
+                            messageModule.send(player, StorageKey.CLAN_ACCEPT_SUCCESS, new Replacement("%clan_name%", clan.getName()));
+                        } else {
+                            messageModule.send(player, StorageKey.CLAN_HANDLEINVITATION_NOT_FOUND);
+                        }
                     } else {
-                        messageModule.send(player, StorageKey.CLAN_HANDLEINVITATION_NOT_FOUND);
+                        messageModule.send(sender, StorageKey.CLAN_UNAVAILABLE);
                     }
                 } else {
                     messageModule.send(player, StorageKey.INVALID_ARGUMENTS);

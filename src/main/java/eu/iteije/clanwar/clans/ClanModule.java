@@ -4,6 +4,7 @@ import eu.iteije.clanwar.ClanWar;
 import eu.iteije.clanwar.clans.invites.ClanInviteModule;
 import eu.iteije.clanwar.clans.objects.Clan;
 import eu.iteije.clanwar.clans.objects.ClanInfo;
+import eu.iteije.clanwar.clans.responses.KickResponse;
 import eu.iteije.clanwar.clans.responses.TransferResponse;
 import eu.iteije.clanwar.databases.DatabaseModule;
 import eu.iteije.clanwar.messages.MessageModule;
@@ -151,6 +152,18 @@ public class ClanModule {
     public void add(Clan clan, UUID uuid) {
         PlayerDataObject data = PlayerFetcher.getPlayerData(uuid);
         if (data != null) add(clan, uuid, data.getExactPlayerName());
+    }
+
+    public KickResponse kick(Clan clan, String name) {
+        PlayerDataObject data = PlayerFetcher.getPlayerData(name);
+        if (data == null) return new KickResponse(false, null);
+
+        UUID memberUniqueId = clan.getInfo().getFromName(data.getExactPlayerName());
+        if (memberUniqueId == null) return new KickResponse(false, null);
+
+        clan.getInfo().removeMember(data.getExactPlayerName());
+        playerModule.setClan(memberUniqueId, -1);
+        return new KickResponse(true, data.getExactPlayerName());
     }
 
 }

@@ -44,6 +44,9 @@ public enum StorageKey {
     CLAN_ACCEPT_SUCCESS("clan-accept-success"),
     CLAN_DECLINE_SUCCESS("clan-decline-success"),
 
+    CLAN_KICK_ERROR("clan-kick-error"),
+    CLAN_KICK_SUCCESS("clan-kick-success")
+
     ;
 
     @Getter private final String path;
