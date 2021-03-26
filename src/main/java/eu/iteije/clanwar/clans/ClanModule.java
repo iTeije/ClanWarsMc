@@ -143,4 +143,14 @@ public class ClanModule {
         if (data != null) remove(clan, uuid, data.getExactPlayerName());
     }
 
+    public void add(Clan clan, UUID uuid, String name) {
+        this.playerModule.setClan(uuid, clan.getId());
+        clan.getInfo().addMember(uuid, name);
+    }
+
+    public void add(Clan clan, UUID uuid) {
+        PlayerDataObject data = PlayerFetcher.getPlayerData(uuid);
+        if (data != null) add(clan, uuid, data.getExactPlayerName());
+    }
+
 }

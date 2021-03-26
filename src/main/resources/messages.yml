@@ -26,8 +26,13 @@ clan-disband-confirm: "&cAre you sure you want to disband your clan? Doing so wi
 clan-disband-success: "&aYour clan has been disbanded successfully."
 
 clan-invite-another-clan: "&cThis player is in another clan!"
+clan-invite-pending: "&cThis player already has a pending invite from your clan."
 clan-invite-success: "&aYou invited &e%player_name%&a to your clan."
 clan-invite-target: "&b&lINVITE! &eYou have been invited by &a%clan_owner_name% &eto join their clan. Type &a/clan accept %clan_name% &eto accept or &a/clan decline %clan_name% &eto decline the invitation."
 
 clan-leave-ownership: "&cYou are the clan owner. You cannot leave until you &4/clan disband &cor &4/clan transfer&c!"
 clan-leave-success: "&aYou successfully left your clan!"
+
+clan-accept-unavailable: "&cYou are already in another clan."
+clan-accept-not-found: "&cNo invitation from this clan has been found."
+clan-accept-success: "&aYou have successfully joined &e%clan_name%&a!"

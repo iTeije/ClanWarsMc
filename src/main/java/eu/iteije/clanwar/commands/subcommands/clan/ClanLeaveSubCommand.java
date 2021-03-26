@@ -31,12 +31,12 @@ public class ClanLeaveSubCommand extends SubCommand {
                 // Make sure the player is NOT the owner of the clan
                 if (!clan.getOwner().equals(player.getUniqueId())) {
                     clanModule.remove(clan, player.getUniqueId(), player.getName());
-                    messageModule.send(sender, StorageKey.CLAN_LEAVE_SUCCESS);
+                    messageModule.send(player, StorageKey.CLAN_LEAVE_SUCCESS);
                 } else {
-                    messageModule.send(sender, StorageKey.CLAN_LEAVE_OWNERSHIP);
+                    messageModule.send(player, StorageKey.CLAN_LEAVE_OWNERSHIP);
                 }
             } else {
-                messageModule.send(sender, StorageKey.CLAN_UNAVAILABLE);
+                messageModule.send(player, StorageKey.CLAN_UNAVAILABLE);
             }
         } else {
             messageModule.send(sender, StorageKey.PROTOCOL_ERROR);

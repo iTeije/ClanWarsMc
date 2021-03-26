@@ -17,6 +17,7 @@ import org.bukkit.plugin.PluginManager;
 
 import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.util.Collections;
 import java.util.List;
 import java.util.UUID;
 
@@ -46,6 +47,11 @@ public class ClanInviteModule {
             return;
         }
 
+        if (hasInvite(clan.getId(), data.getUniqueId())) {
+            messageModule.send(inviter, StorageKey.CLAN_INVITE_PENDING);
+            return;
+        }
+
         databaseModule.fetch(cachedRowSet -> {
             try {
                 ResultSet set = cachedRowSet.getOriginal();
@@ -57,10 +63,10 @@ public class ClanInviteModule {
                     if (clanId == -1) {
                         // Send invite
                         int inviterId = clan.getId();
-                        saveInvite(inviterId, data.getUniqueId());
+                        saveInvite(inviterId, data.getUniqueId().toString());
 
                         try {
-                            UUID uuid = UUID.fromString(data.getUniqueId());
+                            UUID uuid = data.getUniqueId();
                             Player player = Bukkit.getPlayer(uuid);
 
                             if (player != null) {
@@ -104,6 +110,23 @@ public class ClanInviteModule {
                     new Replacement("%clan_name%", clan.getName()),
                     new Replacement("%clan_owner_name%", clan.getInfo().getOwnerName())
             );
+        }
+    }
+
+    public boolean hasInvite(int id, UUID uuid) {
+        List<Integer> invites = invitesFile.getConfiguration().getIntegerList(uuid.toString());
+        if (invites.size() == 0) return false;
+        return invites.contains(id);
+    }
+
+    public void handleInvitation(Clan clan, boolean accept, UUID uuid, String playerName) {
+        List<Integer> invites = invitesFile.getConfiguration().getIntegerList(uuid.toString());
+        invites.removeAll(Collections.singletonList(clan.getId()));
+        invitesFile.getConfiguration().set(uuid.toString(), invites);
+        invitesFile.save();
+
+        if (accept) {
+            clanModule.add(clan, uuid, playerName);
         }
     }
 

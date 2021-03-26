@@ -32,7 +32,8 @@ public class ClanCommand extends PluginCommand implements CommandExecutor, TabCo
                 new ClanTransferSubCommand(clanModule, playerModule, messageModule),
                 new ClanDisbandSubCommand(clanModule, playerModule, messageModule),
                 new ClanInviteSubCommand(messageModule, clanModule, playerModule),
-                new ClanLeaveSubCommand(clanModule, playerModule, messageModule)
+                new ClanLeaveSubCommand(clanModule, playerModule, messageModule),
+                new ClanAcceptSubCommand(messageModule, clanModule, playerModule)
         );
     }
 
