@@ -33,6 +33,7 @@ clan-invite-target: "&b&lINVITE! &eYou have been invited by &a%clan_owner_name% 
 clan-leave-ownership: "&cYou are the clan owner. You cannot leave until you &4/clan disband &cor &4/clan transfer&c!"
 clan-leave-success: "&aYou successfully left your clan!"
 
-clan-accept-unavailable: "&cYou are already in another clan."
-clan-accept-not-found: "&cNo invitation from this clan has been found."
+clan-handleinvitation-unavailable: "&cYou are already in another clan."
+clan-handleinvitation-not-found: "&cNo invitation from this clan has been found."
 clan-accept-success: "&aYou have successfully joined &e%clan_name%&a!"
+clan-decline-success: "&aDeclined invitation from &e%clan_name%&a!"

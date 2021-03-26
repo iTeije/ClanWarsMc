@@ -39,9 +39,10 @@ public enum StorageKey {
     CLAN_LEAVE_OWNERSHIP("clan-leave-ownership"),
     CLAN_LEAVE_SUCCESS("clan-leave-success"),
 
-    CLAN_ACCEPT_UNAVAILABLE("clan-accept-unavailable"),
+    CLAN_HANDLEINVITATION_UNAVAILABLE("clan-handleinvitation-unavailable"),
+    CLAN_HANDLEINVITATION_NOT_FOUND("clan-handleinvitation-not-found"),
     CLAN_ACCEPT_SUCCESS("clan-accept-success"),
-    CLAN_ACCEPT_NOT_FOUND("clan-accept-not-found"),
+    CLAN_DECLINE_SUCCESS("clan-decline-success"),
 
     ;
 
