@@ -44,7 +44,8 @@ public class PlayerFetcher {
             String uuid = ((String) data.get("id")).replaceAll("(.{8})(.{4})(.{4})(.{4})(.+)", "$1-$2-$3-$4-$5");
 
             return new PlayerDataObject(UUID.fromString(uuid), (String) data.get("name"));
-        } catch (IOException | ParseException exception) {
+        } catch (ParseException ignored) {
+        } catch (IOException exception) {
             exception.printStackTrace();
         }
         return null;

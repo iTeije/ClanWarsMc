@@ -120,9 +120,7 @@ public class ClanInviteModule {
     }
 
     public void handleInvitation(Clan clan, boolean accept, UUID uuid, String playerName) {
-        List<Integer> invites = invitesFile.getConfiguration().getIntegerList(uuid.toString());
-        invites.removeAll(Collections.singletonList(clan.getId()));
-        invitesFile.getConfiguration().set(uuid.toString(), invites);
+        invitesFile.getConfiguration().set(uuid.toString(), null);
         invitesFile.save();
 
         if (accept) {
