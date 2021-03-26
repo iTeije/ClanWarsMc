@@ -9,6 +9,8 @@ import eu.iteije.clanwar.databases.DatabaseModule;
 import eu.iteije.clanwar.messages.MessageModule;
 import eu.iteije.clanwar.players.PlayerModule;
 import eu.iteije.clanwar.resources.PluginFile;
+import eu.iteije.clanwar.utils.fetcher.PlayerDataObject;
+import eu.iteije.clanwar.utils.fetcher.PlayerFetcher;
 import lombok.Getter;
 import org.bukkit.entity.Player;
 
@@ -129,6 +131,16 @@ public class ClanModule {
         databaseModule.execute("DELETE FROM clans WHERE id=?", clan.getId());
         this.clans.remove(id);
         this.clanIdForName.remove(clanName);
+    }
+
+    public void remove(Clan clan, UUID uuid, String name) {
+        this.playerModule.setClan(uuid, -1);
+        clan.getInfo().removeMember(name);
+    }
+
+    public void remove(Clan clan, UUID uuid) {
+        PlayerDataObject data = PlayerFetcher.getPlayerData(uuid);
+        if (data != null) remove(clan, uuid, data.getExactPlayerName());
     }
 
 }

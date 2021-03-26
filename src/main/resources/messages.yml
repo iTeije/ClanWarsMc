@@ -28,3 +28,6 @@ clan-disband-success: "&aYour clan has been disbanded successfully."
 clan-invite-another-clan: "&cThis player is in another clan!"
 clan-invite-success: "&aYou invited &e%player_name%&a to your clan."
 clan-invite-target: "&b&lINVITE! &eYou have been invited by &a%clan_owner_name% &eto join their clan. Type &a/clan accept %clan_name% &eto accept or &a/clan decline %clan_name% &eto decline the invitation."
+
+clan-leave-ownership: "&cYou are the clan owner. You cannot leave until you &4/clan disband &cor &4/clan transfer&c!"
+clan-leave-success: "&aYou successfully left your clan!"

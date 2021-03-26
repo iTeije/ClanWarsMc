@@ -35,6 +35,9 @@ public enum StorageKey {
     CLAN_INVITE_SUCCESS("clan-invite-success"),
     CLAN_INVITE_TARGET("clan-invite-target"),
 
+    CLAN_LEAVE_OWNERSHIP("clan-leave-ownership"),
+    CLAN_LEAVE_SUCCESS("clan-leave-success")
+
     ;
 
     @Getter private final String path;

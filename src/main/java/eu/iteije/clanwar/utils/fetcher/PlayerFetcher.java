@@ -9,12 +9,21 @@ import java.io.IOException;
 import java.io.InputStreamReader;
 import java.net.HttpURLConnection;
 import java.net.URL;
+import java.util.UUID;
 
 public class PlayerFetcher {
 
     public static PlayerDataObject getPlayerData(String playerName) {
+        return fetch("https://api.mojang.com/users/profiles/minecraft/" + playerName);
+    }
+
+    public static PlayerDataObject getPlayerData(UUID uuid) {
+        return fetch("https://sessionserver.mojang.com/session/minecraft/profile/" + uuid.toString());
+    }
+
+    private static PlayerDataObject fetch(String link) {
         try {
-            URL url = new URL("https://api.mojang.com/users/profiles/minecraft/" + playerName);
+            URL url = new URL(link);
             HttpURLConnection con = (HttpURLConnection) url.openConnection();
             con.setRequestMethod("GET");
             con.setDoOutput(true);
