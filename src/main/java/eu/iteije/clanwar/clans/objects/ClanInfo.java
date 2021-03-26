@@ -28,10 +28,6 @@ public class ClanInfo {
         return this.members.get(name);
     }
 
-    public Set<String> getMemberNames() {
-        return this.members.keySet();
-    }
-
     public String getMembersReadable() {
         if (members.size() == 0) return "-";
         return String.join(", ", members.keySet());
