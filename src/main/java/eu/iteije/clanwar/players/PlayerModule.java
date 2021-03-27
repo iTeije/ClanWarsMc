@@ -3,6 +3,7 @@ package eu.iteije.clanwar.players;
 import eu.iteije.clanwar.ClanWar;
 import eu.iteije.clanwar.databases.DatabaseModule;
 import eu.iteije.clanwar.games.GameModule;
+import eu.iteije.clanwar.players.listeners.InventoryClickListener;
 import eu.iteije.clanwar.players.listeners.PlayerJoinListener;
 import eu.iteije.clanwar.players.listeners.PlayerQuitListener;
 import eu.iteije.clanwar.players.objects.CWPlayer;
@@ -24,6 +25,7 @@ public class PlayerModule {
         PluginManager manager = instance.getServer().getPluginManager();
         manager.registerEvents(new PlayerJoinListener(gameModule, this), instance);
         manager.registerEvents(new PlayerQuitListener(this), instance);
+        manager.registerEvents(new InventoryClickListener(), instance);
 
         this.databaseModule = databaseModule;
         this.players = new HashMap<>();
