@@ -33,7 +33,7 @@ public class SelectKitMenu extends Menu {
         }
 
         // Close inventory item
-        setItem(49, new Item(Material.BARRIER).setOnClick((player, item) -> player.closeInventory()));
+        setItem(49, new Item(Material.BARRIER).setName("&cClose").setOnClick((player, item) -> player.closeInventory()));
 
     }
 }
