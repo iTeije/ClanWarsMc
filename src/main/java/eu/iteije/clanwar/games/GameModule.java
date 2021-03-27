@@ -12,7 +12,6 @@ import eu.iteije.clanwar.players.objects.CWPlayer;
 import eu.iteije.clanwar.resources.PluginFile;
 import eu.iteije.clanwar.utils.serializers.LocationSerializer;
 import lombok.Getter;
-import org.bukkit.Bukkit;
 import org.bukkit.Location;
 import org.bukkit.entity.Player;
 
@@ -86,15 +85,15 @@ public class GameModule {
         }
     }
 
-    public void openKitMenu(CWPlayer player) {
+    public void openKitMenu(CWPlayer player, Player bukkitPlayer) {
         if (activeGame != null) {
             if (activeGame.isParticipating(player.getClanId())) {
-                this.selectKitMenu.open(Bukkit.getPlayer(player.getUuid()));
+                this.selectKitMenu.open(bukkitPlayer);
             } else {
-                // TODO not participating message
+                messageModule.send(bukkitPlayer, StorageKey.GAME_JOIN_UNAVAILABLE);
             }
         } else {
-            // TODO no active game message
+            messageModule.send(bukkitPlayer, StorageKey.GAME_JOIN_INACTIVE);
         }
     }
 

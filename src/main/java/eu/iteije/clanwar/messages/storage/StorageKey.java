@@ -47,7 +47,10 @@ public enum StorageKey {
     CLAN_KICK_ERROR("clan-kick-error"),
     CLAN_KICK_SUCCESS("clan-kick-success"),
 
-    GAMEMANAGER_PLACENPC_SUCCESS("gamemanager-placenpc-success")
+    GAMEMANAGER_PLACENPC_SUCCESS("gamemanager-placenpc-success"),
+
+    GAME_JOIN_INACTIVE("game-join-inactive"),
+    GAME_JOIN_UNAVAILABLE("game-join-unavailable")
 
     ;
 

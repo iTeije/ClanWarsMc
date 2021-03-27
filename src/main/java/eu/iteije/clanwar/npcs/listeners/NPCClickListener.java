@@ -24,7 +24,7 @@ public class NPCClickListener implements Listener {
 
     @EventHandler
     public void onLeftClick(NPCLeftClickEvent event) {
-        gameModule.openKitMenu(playerModule.getPlayer(event.getClicker().getUniqueId()));
+        gameModule.openKitMenu(playerModule.getPlayer(event.getClicker().getUniqueId()), event.getClicker());
     }
 
 }

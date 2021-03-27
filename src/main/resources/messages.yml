@@ -42,3 +42,6 @@ clan-kick-error: "&cThis player is not a member of your clan!"
 clan-kick-success: "&aYou successfully removed &e%player_name%&a from your clan."
 
 gamemanager-placenpc-success: "&aA new join NPC has been placed."
+
+game-join-inactive: "&cThere is no active game at this moment."
+game-join-unavailable: "&cYou are unable to join this game as you are in neither of the two participating clans."
