@@ -28,7 +28,10 @@ public class NpcModule {
 
     private NPC getJoinNpc(PluginFile configFile) {
         String serializedLocation = configFile.getConfiguration().getString("npc");
-        if (serializedLocation == null) return null;
+        if (serializedLocation == null) {
+            System.out.println("[ClanWar] Unable to place join NPC, no location was found.");
+            return null;
+        }
 
         Location location = LocationSerializer.deserializeLocation(serializedLocation);
         if (location != null) {

@@ -27,7 +27,9 @@ public class CommandManager {
      * @return all registered subcommand objects
      */
     public List<SubCommand> getSubCommandsHandlers(String mainCommand) {
-        return new ArrayList<>(subCommands.get(mainCommand).values());
+        Map<String, SubCommand> subCommandMap = subCommands.get(mainCommand);
+        if (subCommandMap != null) return new ArrayList<>(subCommandMap.values());
+        return new ArrayList<>();
     }
 
     /**
