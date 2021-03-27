@@ -68,6 +68,10 @@ public class NpcModule {
         }
     }
 
+    public void unload() {
+        CitizensAPI.getNPCRegistry().deregisterAll();
+    }
+
     private NPC setSkin(NPC npc) {
         npc.getOrAddTrait(SkinTrait.class).setSkinPersistent(
                 "639601793",
@@ -76,9 +80,4 @@ public class NpcModule {
         );
         return npc;
     }
-
-
-
-
-
 }

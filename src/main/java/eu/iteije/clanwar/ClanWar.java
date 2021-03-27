@@ -15,6 +15,7 @@ import org.bukkit.plugin.java.JavaPlugin;
 public final class ClanWar extends JavaPlugin {
 
     private DatabaseModule databaseModule;
+    private NpcModule npcModule;
 
     @Override
     public void onEnable() {
@@ -31,7 +32,7 @@ public final class ClanWar extends JavaPlugin {
         GameModule gameModule = new GameModule(kitsFile, configFile, messageModule);
         PlayerModule playerModule = new PlayerModule(this, gameModule, databaseModule);
         ClanModule clanModule = new ClanModule(databaseModule, playerModule, messageModule, invitesFile, this);
-        NpcModule npcModule = new NpcModule(this, configFile);
+        this.npcModule = new NpcModule(this, configFile);
         CommandModule commandModule = new CommandModule(this, gameModule, messageModule, playerModule, clanModule, npcModule);
 
         // In case some fucking idiot decides to reload the server
@@ -43,6 +44,8 @@ public final class ClanWar extends JavaPlugin {
     @Override
     public void onDisable() {
         // Plugin shutdown logic
+        this.npcModule.unload();
+
         this.databaseModule.close();
     }
 }
