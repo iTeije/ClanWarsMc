@@ -1,2 +1,51 @@
-# TODO example kit
-kits: {}
+kits:
+  Beast:
+    icon: DIAMOND_SWORD
+    effects:
+    items:
+      '1':
+        item: DIAMOND_SWORD
+        amount: 1
+        enchantments: []
+    gear:
+      HELMET:
+        item: DIAMOND_HELMET
+        enchantments:
+          - "PROTECTION:2"
+      CHESTPLATE:
+        item: DIAMOND_CHESTPLATE
+        enchantments:
+          - "PROTECTION:2"
+      LEGGINGS:
+        item: DIAMOND_LEGGINGS
+        enchantments:
+          - "PROTECTION:2"
+      BOOTS:
+        item: DIAMOND_BOOTS
+        enchantments:
+          - "PROTECTION:2"
+  Speed:
+    icon: FEATHER
+    effects:
+      - "SPEED:2"
+    items:
+      '1':
+        item: DIAMOND_SWORD
+        amount: 1
+        enchantments:
+          - "SHARPNESS:1"
+    gear:
+      HELMET:
+        item: IRON_HELMET
+        enchantments:
+      CHESTPLATE:
+        item: DIAMOND_CHESTPLATE
+        enchantments:
+          - "PROTECTION:2"
+      LEGGINGS:
+        item: IRON_LEGGINGS
+        enchantments:
+      BOOTS:
+        item: DIAMOND_BOOTS
+        enchantments:
+          - "PROTECTION:2"

@@ -1,6 +1,7 @@
 package eu.iteije.clanwar.games;
 
 import eu.iteije.clanwar.games.enums.SpawnPointType;
+import eu.iteije.clanwar.games.kits.GameKitModule;
 import eu.iteije.clanwar.messages.MessageModule;
 import eu.iteije.clanwar.messages.Replacement;
 import eu.iteije.clanwar.messages.storage.StorageKey;
@@ -20,6 +21,7 @@ public class GameModule {
     private final PluginFile configFile;
 
     private final MessageModule messageModule;
+    private final GameKitModule kitModule;
 
     public GameModule(PluginFile kitFile, PluginFile configFile, MessageModule messageModule) {
         this.spawns = new HashMap<>();
@@ -27,6 +29,7 @@ public class GameModule {
         this.kitFile = kitFile;
         this.configFile = configFile;
 
+        this.kitModule = new GameKitModule(kitFile);
         this.messageModule = messageModule;
 
         this.fetchSpawns();
