@@ -2,6 +2,7 @@ package eu.iteije.clanwar.games.kits.objects;
 
 import eu.iteije.clanwar.games.kits.enums.PotionTypes;
 import eu.iteije.clanwar.resources.PluginFile;
+import lombok.Getter;
 import org.bukkit.Material;
 import org.bukkit.NamespacedKey;
 import org.bukkit.configuration.ConfigurationSection;
@@ -16,10 +17,12 @@ import org.bukkit.potion.PotionEffectType;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Objects;
 
 public class Kit {
 
-    private final String name;
+    @Getter private final String name;
+    @Getter private final ItemStack icon;
     private final List<ItemStack> items;
     private final List<PotionEffect> effects;
     private final KitArmor armor;
@@ -28,6 +31,8 @@ public class Kit {
         this.name = name;
 
         FileConfiguration config = kitFile.getConfiguration();
+        this.icon = new ItemStack(Objects.requireNonNull(Material.getMaterial(Objects.requireNonNull(config.getString("kits." + name + ".icon")))));
+
         this.items = this.getItems(config.getConfigurationSection("kits." + name + ".items"));
         this.armor = this.getArmor(config.getConfigurationSection("kits." + name + ".gear"));
         this.effects = this.getEffects(config.getStringList("kits." + name + ".effects"));
@@ -54,7 +59,7 @@ public class Kit {
 
             int amplifier = data[1] != null ? Integer.parseInt(data[1]) - 1 : 1;
 
-            this.effects.add(effectType.createEffect(3600 * 20, amplifier));
+            effects.add(effectType.createEffect(3600 * 20, amplifier));
         }
 
         return effects;

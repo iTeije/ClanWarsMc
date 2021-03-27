@@ -32,7 +32,7 @@ public final class ClanWar extends JavaPlugin {
         GameModule gameModule = new GameModule(kitsFile, configFile, messageModule);
         PlayerModule playerModule = new PlayerModule(this, gameModule, databaseModule);
         ClanModule clanModule = new ClanModule(databaseModule, playerModule, messageModule, invitesFile, this);
-        this.npcModule = new NpcModule(this, configFile);
+        this.npcModule = new NpcModule(this, configFile, gameModule);
         CommandModule commandModule = new CommandModule(this, gameModule, messageModule, playerModule, clanModule, npcModule);
 
         // In case some fucking idiot decides to reload the server

@@ -18,6 +18,10 @@ public class Item {
         this.item = new ItemStack(material, 1);
     }
 
+    public Item(ItemStack stack) {
+        this.item = stack;
+    }
+
     public Item setName(String name) {
         name = ChatColor.translateAlternateColorCodes('&', name);
 
