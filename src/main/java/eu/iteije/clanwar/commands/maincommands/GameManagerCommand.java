@@ -1,13 +1,10 @@
 package eu.iteije.clanwar.commands.maincommands;
 
-import eu.iteije.clanwar.clans.ClanModule;
-import eu.iteije.clanwar.commands.subcommands.clan.*;
 import eu.iteije.clanwar.framework.commands.CommandManager;
 import eu.iteije.clanwar.framework.commands.objects.PluginCommand;
 import eu.iteije.clanwar.framework.commands.objects.SubCommand;
 import eu.iteije.clanwar.messages.MessageModule;
 import eu.iteije.clanwar.messages.storage.StorageKey;
-import eu.iteije.clanwar.players.PlayerModule;
 import org.bukkit.command.Command;
 import org.bukkit.command.CommandExecutor;
 import org.bukkit.command.CommandSender;
@@ -16,30 +13,21 @@ import org.bukkit.command.TabCompleter;
 import java.util.ArrayList;
 import java.util.List;
 
-public class ClanCommand extends PluginCommand implements CommandExecutor, TabCompleter {
+public class GameManagerCommand extends PluginCommand implements CommandExecutor, TabCompleter {
 
     private final MessageModule messageModule;
     private final CommandManager commandManager;
 
-    public ClanCommand(ClanModule clanModule, PlayerModule playerModule, CommandManager commandManager, MessageModule messageModule) {
-        super("clan", "CLAN WAR");
+    public GameManagerCommand(CommandManager commandManager, MessageModule messageModule) {
+        super("gamemanager", "GAME MANAGER");
         this.messageModule = messageModule;
         this.commandManager = commandManager;
 
-        this.commandManager.registerSubCommands(this.getSyntax(),
-                new ClanCreateSubCommand(clanModule, playerModule, messageModule),
-                new ClanInfoSubCommand(clanModule, messageModule, playerModule),
-                new ClanTransferSubCommand(clanModule, playerModule, messageModule),
-                new ClanDisbandSubCommand(clanModule, playerModule, messageModule),
-                new ClanInviteSubCommand(messageModule, clanModule, playerModule),
-                new ClanLeaveSubCommand(clanModule, playerModule, messageModule),
-                new ClanAcceptSubCommand(messageModule, clanModule, playerModule),
-                new ClanDeclineSubCommand(messageModule, clanModule, playerModule),
-                new ClanKickSubCommand(messageModule, clanModule, playerModule)
-        );
+
     }
 
-    public boolean onCommand(CommandSender sender, Command cmd, String label, String[] args) {
+    @Override
+    public boolean onCommand(CommandSender sender, Command command, String label, String[] args) {
         if (args.length == 0) {
             super.sendHelp(sender, commandManager.getSubCommandsHandlers(super.getSyntax()));
             return true;

@@ -11,16 +11,17 @@ import java.util.List;
 public class PluginCommand {
 
     @Getter private final String syntax;
+    private final String helpTitle;
 
     public void sendHelp(CommandSender sender, List<SubCommand> subCommands) {
         sendMessage(sender, "&7");
-        sendMessage(sender, "&7---------- &e&lCLAN WAR &7----------");
+        sendMessage(sender, "&7---------- &e&l" + helpTitle + " &7----------");
         sendMessage(sender, "&7");
         for (SubCommand subCommand : subCommands) {
             sendMessage(sender, "&a/" + syntax + " " + subCommand.getCommand() + " &7" + subCommand.getDescription());
         }
         sendMessage(sender, "&7");
-        sendMessage(sender, "&7---------- &e&lCLAN WAR &7----------");
+        sendMessage(sender, "&7---------- &e&l" + helpTitle + " &7----------");
     }
 
     private void sendMessage(CommandSender sender, String message) {

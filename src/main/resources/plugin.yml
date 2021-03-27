@@ -12,3 +12,5 @@ commands:
     usage: /<command>
   clan:
     usage: /<command>
+  gamemanager:
+    usage: /<command>

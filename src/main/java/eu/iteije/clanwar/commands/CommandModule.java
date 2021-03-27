@@ -3,6 +3,7 @@ package eu.iteije.clanwar.commands;
 import eu.iteije.clanwar.ClanWar;
 import eu.iteije.clanwar.clans.ClanModule;
 import eu.iteije.clanwar.commands.maincommands.ClanCommand;
+import eu.iteije.clanwar.commands.maincommands.GameManagerCommand;
 import eu.iteije.clanwar.commands.maincommands.SetSpawnCommand;
 import eu.iteije.clanwar.framework.commands.CommandManager;
 import eu.iteije.clanwar.games.GameModule;
@@ -21,5 +22,9 @@ public class CommandModule {
         ClanCommand clanCommand = new ClanCommand(clanModule, playerModule, manager, messageModule);
         instance.getCommand("clan").setExecutor(clanCommand);
         instance.getCommand("clan").setTabCompleter(clanCommand);
+
+        GameManagerCommand gameManagerCommand = new GameManagerCommand(manager, messageModule);
+        instance.getCommand("gamemanager").setExecutor(gameManagerCommand);
+        instance.getCommand("gamemanager").setTabCompleter(gameManagerCommand);
     }
 }
