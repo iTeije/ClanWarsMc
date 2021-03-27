@@ -5,6 +5,7 @@ import eu.iteije.clanwar.commands.CommandModule;
 import eu.iteije.clanwar.databases.DatabaseModule;
 import eu.iteije.clanwar.games.GameModule;
 import eu.iteije.clanwar.messages.MessageModule;
+import eu.iteije.clanwar.npcs.NpcModule;
 import eu.iteije.clanwar.players.PlayerModule;
 import eu.iteije.clanwar.resources.PluginFile;
 import org.bukkit.Bukkit;
@@ -30,7 +31,8 @@ public final class ClanWar extends JavaPlugin {
         GameModule gameModule = new GameModule(kitsFile, configFile, messageModule);
         PlayerModule playerModule = new PlayerModule(this, gameModule, databaseModule);
         ClanModule clanModule = new ClanModule(databaseModule, playerModule, messageModule, invitesFile, this);
-        CommandModule commandModule = new CommandModule(this, gameModule, messageModule, playerModule, clanModule);
+        NpcModule npcModule = new NpcModule(this, configFile);
+        CommandModule commandModule = new CommandModule(this, gameModule, messageModule, playerModule, clanModule, npcModule);
 
         // In case some fucking idiot decides to reload the server
         for (Player player : Bukkit.getOnlinePlayers()) {

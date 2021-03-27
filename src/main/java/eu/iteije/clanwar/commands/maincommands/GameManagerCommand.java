@@ -5,6 +5,7 @@ import eu.iteije.clanwar.framework.commands.objects.PluginCommand;
 import eu.iteije.clanwar.framework.commands.objects.SubCommand;
 import eu.iteije.clanwar.messages.MessageModule;
 import eu.iteije.clanwar.messages.storage.StorageKey;
+import eu.iteije.clanwar.npcs.NpcModule;
 import org.bukkit.command.Command;
 import org.bukkit.command.CommandExecutor;
 import org.bukkit.command.CommandSender;
@@ -18,7 +19,7 @@ public class GameManagerCommand extends PluginCommand implements CommandExecutor
     private final MessageModule messageModule;
     private final CommandManager commandManager;
 
-    public GameManagerCommand(CommandManager commandManager, MessageModule messageModule) {
+    public GameManagerCommand(CommandManager commandManager, MessageModule messageModule, NpcModule npcModule) {
         super("gamemanager", "GAME MANAGER");
         this.messageModule = messageModule;
         this.commandManager = commandManager;

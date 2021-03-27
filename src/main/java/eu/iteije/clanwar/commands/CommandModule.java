@@ -8,11 +8,12 @@ import eu.iteije.clanwar.commands.maincommands.SetSpawnCommand;
 import eu.iteije.clanwar.framework.commands.CommandManager;
 import eu.iteije.clanwar.games.GameModule;
 import eu.iteije.clanwar.messages.MessageModule;
+import eu.iteije.clanwar.npcs.NpcModule;
 import eu.iteije.clanwar.players.PlayerModule;
 
 public class CommandModule {
 
-    public CommandModule(ClanWar instance, GameModule gameModule, MessageModule messageModule, PlayerModule playerModule, ClanModule clanModule) {
+    public CommandModule(ClanWar instance, GameModule gameModule, MessageModule messageModule, PlayerModule playerModule, ClanModule clanModule, NpcModule npcModule) {
         CommandManager manager = new CommandManager();
 
         SetSpawnCommand setSpawnCommand = new SetSpawnCommand(gameModule, messageModule);
@@ -23,7 +24,7 @@ public class CommandModule {
         instance.getCommand("clan").setExecutor(clanCommand);
         instance.getCommand("clan").setTabCompleter(clanCommand);
 
-        GameManagerCommand gameManagerCommand = new GameManagerCommand(manager, messageModule);
+        GameManagerCommand gameManagerCommand = new GameManagerCommand(manager, messageModule, npcModule);
         instance.getCommand("gamemanager").setExecutor(gameManagerCommand);
         instance.getCommand("gamemanager").setTabCompleter(gameManagerCommand);
     }
