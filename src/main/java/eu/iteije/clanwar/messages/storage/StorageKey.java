@@ -45,7 +45,9 @@ public enum StorageKey {
     CLAN_DECLINE_SUCCESS("clan-decline-success"),
 
     CLAN_KICK_ERROR("clan-kick-error"),
-    CLAN_KICK_SUCCESS("clan-kick-success")
+    CLAN_KICK_SUCCESS("clan-kick-success"),
+
+    GAMEMANAGER_PLACENPC_SUCCESS("gamemanager-placenpc-success")
 
     ;
 

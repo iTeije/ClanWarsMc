@@ -3,7 +3,7 @@ package eu.iteije.clanwar.npcs;
 import eu.iteije.clanwar.ClanWar;
 import eu.iteije.clanwar.npcs.listeners.NPCClickListener;
 import eu.iteije.clanwar.resources.PluginFile;
-import eu.iteije.clanwar.utils.LocationSerializer;
+import eu.iteije.clanwar.utils.serializers.LocationSerializer;
 import net.citizensnpcs.api.CitizensAPI;
 import net.citizensnpcs.api.event.SpawnReason;
 import net.citizensnpcs.api.npc.NPC;

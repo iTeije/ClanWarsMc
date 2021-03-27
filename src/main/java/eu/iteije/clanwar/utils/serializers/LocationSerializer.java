@@ -1,4 +1,4 @@
-package eu.iteije.clanwar.utils;
+package eu.iteije.clanwar.utils.serializers;
 
 import org.bukkit.Bukkit;
 import org.bukkit.Location;

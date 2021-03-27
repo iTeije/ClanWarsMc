@@ -1,5 +1,6 @@
 package eu.iteije.clanwar.commands.maincommands;
 
+import eu.iteije.clanwar.commands.subcommands.gamemanager.GMPlaceNpcSubCommand;
 import eu.iteije.clanwar.framework.commands.CommandManager;
 import eu.iteije.clanwar.framework.commands.objects.PluginCommand;
 import eu.iteije.clanwar.framework.commands.objects.SubCommand;
@@ -24,7 +25,9 @@ public class GameManagerCommand extends PluginCommand implements CommandExecutor
         this.messageModule = messageModule;
         this.commandManager = commandManager;
 
-
+        commandManager.registerSubCommands(this.getSyntax(),
+                new GMPlaceNpcSubCommand(messageModule, npcModule)
+        );
     }
 
     @Override

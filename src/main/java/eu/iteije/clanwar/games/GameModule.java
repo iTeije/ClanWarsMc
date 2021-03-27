@@ -5,7 +5,7 @@ import eu.iteije.clanwar.messages.MessageModule;
 import eu.iteije.clanwar.messages.Replacement;
 import eu.iteije.clanwar.messages.storage.StorageKey;
 import eu.iteije.clanwar.resources.PluginFile;
-import eu.iteije.clanwar.utils.LocationSerializer;
+import eu.iteije.clanwar.utils.serializers.LocationSerializer;
 import org.bukkit.Location;
 import org.bukkit.entity.Player;
 
