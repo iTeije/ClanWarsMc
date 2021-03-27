@@ -9,6 +9,7 @@ import java.util.UUID;
 @AllArgsConstructor
 public class CWPlayer {
 
+    @Getter
     private final UUID uuid;
     @Setter @Getter
     private int clanId;

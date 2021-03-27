@@ -3,6 +3,7 @@ package eu.iteije.clanwar.npcs;
 import eu.iteije.clanwar.ClanWar;
 import eu.iteije.clanwar.games.GameModule;
 import eu.iteije.clanwar.npcs.listeners.NPCClickListener;
+import eu.iteije.clanwar.players.PlayerModule;
 import eu.iteije.clanwar.resources.PluginFile;
 import eu.iteije.clanwar.utils.serializers.LocationSerializer;
 import net.citizensnpcs.api.CitizensAPI;
@@ -19,12 +20,12 @@ public class NpcModule {
 
     private final PluginFile configFile;
 
-    public NpcModule(ClanWar instance, PluginFile configFile, GameModule gameModule) {
+    public NpcModule(ClanWar instance, PluginFile configFile, GameModule gameModule, PlayerModule playerModule) {
         this.configFile = configFile;
         this.npc = getJoinNpc(configFile);
 
         PluginManager manager = instance.getServer().getPluginManager();
-        manager.registerEvents(new NPCClickListener(gameModule), instance);
+        manager.registerEvents(new NPCClickListener(gameModule, playerModule), instance);
     }
 
     private NPC getJoinNpc(PluginFile configFile) {

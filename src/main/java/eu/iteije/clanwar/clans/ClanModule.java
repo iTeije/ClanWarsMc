@@ -7,6 +7,7 @@ import eu.iteije.clanwar.clans.objects.ClanInfo;
 import eu.iteije.clanwar.clans.responses.KickResponse;
 import eu.iteije.clanwar.clans.responses.TransferResponse;
 import eu.iteije.clanwar.databases.DatabaseModule;
+import eu.iteije.clanwar.games.GameModule;
 import eu.iteije.clanwar.messages.MessageModule;
 import eu.iteije.clanwar.players.PlayerModule;
 import eu.iteije.clanwar.resources.PluginFile;
@@ -31,7 +32,7 @@ public class ClanModule {
     private final Map<Integer, Clan> clans;
     private final Map<String, Integer> clanIdForName;
 
-    public ClanModule(DatabaseModule databaseModule, PlayerModule playerModule, MessageModule messageModule, PluginFile invitesFile, ClanWar instance) {
+    public ClanModule(DatabaseModule databaseModule, PlayerModule playerModule, MessageModule messageModule, PluginFile invitesFile, GameModule gameModule, ClanWar instance) {
         this.databaseModule = databaseModule;
         this.playerModule = playerModule;
 
@@ -40,6 +41,7 @@ public class ClanModule {
         this.clanIdForName = new HashMap<>();
 
         this.loadClans(databaseModule);
+        gameModule.setActiveGame(this.clans);
     }
 
     private void loadClans(DatabaseModule databaseModule) {
