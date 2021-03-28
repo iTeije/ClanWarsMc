@@ -7,6 +7,7 @@ public class Game {
     private final Clan firstClan;
     private final Clan secondClan;
 
+
     public Game(Clan firstClan, Clan secondClan) {
         this.firstClan = firstClan;
         this.secondClan = secondClan;
